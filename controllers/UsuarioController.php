@@ -85,16 +85,23 @@ class usuarioController{
 	}
 
 	public function eliminar(){
-		Utils::isAdmin();
+		Utils::isIdentity();
+		if(isset($_SESSION['identity'])){
 
-		$usuario = new Usuario();
-		$delete = $usuario->delete();
-
-		if($delete){
-			$_SESSION['delete'] = "complete";
-		}else{
-			$_SESSION['delete'] = "failed";
-		}
-		header('Location:'.base_url);
+			if(isset($_GET['id'])){
+				$id = $_GET['id'];
+				$usuario = new Usuario();
+				$usuario->setId($id);
+				$eliminar = $usuario->eliminar();
+				
+				if($eliminar){
+					$_SESSION['eliminar'] = "complete";
+					Utils::deleteSession('identity');
+				}else{
+					$_SESSION['eliminar'] = "failed";
+				}
+			}	
+		}	
+		header('Location:'.base_url.'usuario/desactivar');
 	}
 } // fin clase
