@@ -83,4 +83,18 @@ class usuarioController{
 
 		require_once 'views/usuario/desactivar.php';
 	}
+
+	public function eliminar(){
+		Utils::isAdmin();
+
+		$usuario = new Usuario();
+		$delete = $usuario->delete();
+
+		if($delete){
+			$_SESSION['delete'] = "complete";
+		}else{
+			$_SESSION['delete'] = "failed";
+		}
+		header('Location:'.base_url);
+	}
 } // fin clase

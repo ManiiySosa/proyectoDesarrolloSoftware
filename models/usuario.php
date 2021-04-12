@@ -104,7 +104,7 @@ class Usuario{
 		
 		return $result;
 	}
-	public function eliminar(){
+	public function delete(){
 		$email = $this->email;
 		$password = $this->password;
 		
@@ -120,9 +120,15 @@ class Usuario{
 			$verify = password_verify($password, $usuario->password);
 			
 			if($verify){
-				$result = $usuario;
-				$sql = "DELETE * FROM usuarios WHERE email = '$email'";
-				$eliminar = $this->db->query($sql);
+				$sql = "DELETE FROM usuarios WHERE email={$this->email}";
+				$delete = $this->db->query($sql);
+				
+				$result = false;
+				if($delete){
+				$result = true;
+				}
+				return $result;
+				
 			}
 		}
 		

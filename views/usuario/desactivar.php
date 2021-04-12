@@ -1,9 +1,9 @@
 <h1>Desactivar cuenta</h1>
 
-<?php if(isset($_SESSION['register']) && $_SESSION['register'] == 'complete'): ?>
-	<strong class="alert_green">Registro completado correctamente</strong>
-<?php elseif(isset($_SESSION['register']) && $_SESSION['register'] == 'failed'): ?>
-	<strong class="alert_red">Registro fallido, introduce bien los datos</strong>
+<?php if(isset($_SESSION['eliminar']) && $_SESSION['eliminar'] == 'complete'): ?>
+	<strong class="alert_green">Su cuenta de ha borrado correctamente</strong>
+<?php elseif(isset($_SESSION['eliminar']) && $_SESSION['eliminar'] == 'failed'): ?>
+	<strong class="alert_red">Su cuenta no se ha borrado correctamente</strong>
 <?php endif; ?>
 
 
@@ -15,5 +15,5 @@
 	<label for="password">Contraseña</label>
 	<input type="password" name="password" required/>
 	
-	<input type="submit" value="Desactivar cuenta" />
+	<a href="<?=base_url?>usuario/eliminar" class="button button-gestion button-red">Eliminar cuenta</a> 
 </form>
