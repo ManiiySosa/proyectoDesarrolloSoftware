@@ -1,7 +1,4 @@
 <?php
-//controlador frontal, se encarga de recoger parametros GET por la url y ver a que controlador pertenece y cargar ese archivo u objeto y 
-//su metodo correspondiente
-
 session_start();
 require_once 'autoload.php';
 require_once 'config/db.php';

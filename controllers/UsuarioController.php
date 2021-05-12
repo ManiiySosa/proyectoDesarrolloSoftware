@@ -41,7 +41,6 @@ class usuarioController{
 		header("Location:".base_url.'usuario/registro');
 	}
 	
-	//funcion para iniciar sesion
 	public function login(){
 		if(isset($_POST)){
 			// Identificar al usuario
@@ -66,7 +65,7 @@ class usuarioController{
 		}
 		header("Location:".base_url);
 	}
-	//funcion para cerrar la sesion
+	
 	public function logout(){
 		if(isset($_SESSION['identity'])){
 			unset($_SESSION['identity']);
@@ -79,29 +78,4 @@ class usuarioController{
 		header("Location:".base_url);
 	}
 	
-	public function desactivar(){
-
-		require_once 'views/usuario/desactivar.php';
-	}
-
-	public function eliminar(){
-		Utils::isIdentity();
-		if(isset($_SESSION['identity'])){
-
-			if(isset($_GET['id'])){
-				$id = $_GET['id'];
-				$usuario = new Usuario();
-				$usuario->setId($id);
-				$eliminar = $usuario->eliminar();
-				
-				if($eliminar){
-					$_SESSION['eliminar'] = "complete";
-					Utils::deleteSession('identity');
-				}else{
-					$_SESSION['eliminar'] = "failed";
-				}
-			}	
-		}	
-		header('Location:'.base_url.'usuario/desactivar');
-	}
 } // fin clase
