@@ -1,5 +1,5 @@
-/*CREATE DATABASE tienda_camisetas;*/
-USE tienda_camisetas;
+CREATE DATABASE tienda_master;
+USE tienda_master;
 
 CREATE TABLE usuarios(
 id              int(255) auto_increment not null,
