@@ -45,6 +45,5 @@ class Categoria{
 		}
 		return $result;
 	}
-	
-	
+
 }
