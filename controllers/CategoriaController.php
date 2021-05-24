@@ -32,6 +32,28 @@ class categoriaController{
 	
 	public function crear(){
 		Utils::isAdmin();
+		if(isset($_GET['id'])){
+			$categoria_id = $_GET['id'];
+		}else{
+			header('Location:'.base_url);
+		}
+		if(!isset($counter) || $counter == 0){
+			// Conseguir categoria
+			$categoria = new Categoria();
+			$categoria->setId($categoria_id);
+			$categoria = $categoria->getOne();
+
+			// Añadir al categoria
+			if(is_object($categoria)){
+				$categoria->setNombre($_POST['nombre']);
+			        $save = $categoria->save();
+				);
+			}
+		}
+		
+		
+		
+		
 		require_once 'views/categoria/crear.php';
 	}
 	
