@@ -32,28 +32,6 @@ class categoriaController{
 	
 	public function crear(){
 		Utils::isAdmin();
-		if(isset($_GET['id'])){
-			$categoria_id = $_GET['id'];
-		}else{
-			header('Location:'.base_url);
-		}
-		if(!isset($counter) || $counter == 0){
-			// Conseguir categoria
-			$categoria = new Categoria();
-			$categoria->setId($categoria_id);
-			$categoria = $categoria->getOne();
-
-			// Añadir al categoria
-			if(is_object($categoria)){
-				$categoria->setNombre($_POST['nombre']);
-			        $save = $categoria->save();
-				);
-			}
-		}
-		
-		
-		
-		
 		require_once 'views/categoria/crear.php';
 	}
 	
@@ -63,9 +41,42 @@ class categoriaController{
 			// Guardar la categoria en bd
 			$categoria = new Categoria();
 			$categoria->setNombre($_POST['nombre']);
-			$save = $categoria->save();
-		}
+
+			if(isset($_GET['id'])){
+				$id = $_GET['id'];
+				$categoria->setId($id);
+
+		    	$save = $categoria->edit();
+			}else{
+				$save = $categoria->save();
+			}
+			if($save){
+				$_SESSION['categoria'] = "complete";
+			}else{
+				$_SESSION['categoria'] = "failed";
+			}
+
+		}else{
+			$_SESSION['categoria'] = "failed";
+		}	
 		header("Location:".base_url."categoria/index");
+	}
+
+	public function editar(){
+		Utils::isAdmin();
+		if(isset($_GET['id'])){
+			$id = $_GET['id'];
+			$edit = true;
+
+			$categoria = new Categoria();
+			$categoria->setId($id);
+
+			$cat = $categoria->getOne();
+			
+			require_once 'views/categoria/crear.php';
+		}else{
+			header('Location:'.base_url.'categoria/index');
+		}
 	}
 	
 }

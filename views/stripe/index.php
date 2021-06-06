@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
   <head>
@@ -36,7 +37,7 @@
         <!-- Used to display form errors. -->
         <div id="card-errors" role="alert"></div>
       </div>
-      <button>Pagar</button>
+       <br/> <button>Pagar</button> 
     </form>
     <script>
       // Create a Stripe client.
