@@ -2,8 +2,16 @@
 
 class Database{
 	public static function connect(){
-		$db = new mysqli('localhost', 'root', '', 'tienda_camisetas');
-		$db->query("SET NAMES 'utf8'");
+		try{
+			$db = new mysqli('localhost', 'root', '', 'tienda_camisetas');
+		
+
+		}catch(mysqli_sql_exception $e){
+            throw $e;
+		}
+
+		 $db->query("SET NAMES 'utf8'");
+		 
 		return $db;
 	}
 }
