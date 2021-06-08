@@ -14,6 +14,5 @@ class Database{
 		}
 		
 		 $db->query("SET NAMES 'utf8'");
-		// $db->close();
 	}
 }
