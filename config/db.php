@@ -1,5 +1,4 @@
 <?php
-//error_reporting(0);
 
 class Database{
 	public static function connect(){
@@ -10,6 +9,7 @@ class Database{
 			}			
 		}catch(Exception $e){
 			
+			echo "<script>alert('Error en la base de datos, intentelo de nuevo mas tarde');</script>";
 			header('Location:http://localhost/proyectoDesarrolloSoftware/views/error.php');
 		}
 		

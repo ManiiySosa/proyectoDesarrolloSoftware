@@ -6,8 +6,12 @@
 
 <?php if(isset($_SESSION['categoria']) && $_SESSION['categoria'] == 'complete'): ?>
 	<strong class="alert_green">La categoria se ha creado correctamente</strong>
-<?php elseif(isset($_SESSION['categoria']) && $_SESSION['categoria'] != 'complete'): ?>	
+<?php elseif(isset($_SESSION['categoria']) && $_SESSION['categoria'] == 'failed'): ?>	
 	<strong class="alert_red">La categoria NO se ha creado correctamente</strong>
+<?php elseif(isset($_SESSION['categoria']) && $_SESSION['categoria'] == 'blanco'): ?>	
+	<strong class="alert_red">Campos vacios, intente nuevamente</strong>	
+<?php elseif(isset($_SESSION['categoria']) && $_SESSION['categoria'] == 'existe'): ?>	
+	<strong class="alert_red">La categoria ya existe previamente</strong>
 <?php endif; ?>
 <?php Utils::deleteSession('categoria'); ?>
 
