@@ -11,18 +11,18 @@ class pedidoController{
 	public function add(){
 		if(isset($_SESSION['identity'])){
 			$usuario_id = $_SESSION['identity']->id;
-			$provincia = isset($_POST['provincia']) ? $_POST['provincia'] : false;
+			$telefono = isset($_POST['telefono']) ? $_POST['telefono'] : false;
 			$localidad = isset($_POST['localidad']) ? $_POST['localidad'] : false;
 			$direccion = isset($_POST['direccion']) ? $_POST['direccion'] : false;
 			
 			$stats = Utils::statsCarrito();
 			$coste = $stats['total'];
 				
-			if($provincia && $localidad && $direccion){
+			if($telefono && $localidad && $direccion){
 				// Guardar datos en bd
 				$pedido = new Pedido();
 				$pedido->setUsuario_id($usuario_id);
-				$pedido->setProvincia($provincia);
+				$pedido->setTelefono($telefono);
 				$pedido->setLocalidad($localidad);
 				$pedido->setDireccion($direccion);
 				$pedido->setCoste($coste);
@@ -42,7 +42,7 @@ class pedidoController{
 				$_SESSION['pedido'] = "failed";
 			}
 			
-			header("Location:".base_url.'pedido/confirmado');			
+			header("Location:".base_url.'stripe/index');			
 		}else{
 			// Redigir al index
 			header("Location:".base_url);
