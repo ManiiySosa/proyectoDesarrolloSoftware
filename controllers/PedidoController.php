@@ -120,6 +120,8 @@ class pedidoController{
 			$pedido->edit();
 			
 			header("Location:".base_url.'pedido/detalle&id='.$id);
+			header('Location:'.base_url.'pedido/gestion');
+			
 		}else{
 			header("Location:".base_url);
 		}
