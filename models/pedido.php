@@ -3,7 +3,7 @@
 class Pedido{
 	private $id;
 	private $usuario_id;
-	private $provincia;
+	private $telefono;
 	private $localidad;
 	private $direccion;
 	private $coste;
@@ -25,8 +25,8 @@ class Pedido{
 		return $this->usuario_id;
 	}
 
-	function getProvincia() {
-		return $this->provincia;
+	function getTelefono() {
+		return $this->telefono;
 	}
 
 	function getLocalidad() {
@@ -61,8 +61,8 @@ class Pedido{
 		$this->usuario_id = $usuario_id;
 	}
 
-	function setProvincia($provincia) {
-		$this->provincia = $this->db->real_escape_string($provincia);
+	function setTelefono($telefono) {
+		$this->telefono = $this->db->real_escape_string($telefono);
 	}
 
 	function setLocalidad($localidad) {
@@ -133,7 +133,7 @@ class Pedido{
 	}
 	
 	public function save(){
-		$sql = "INSERT INTO pedidos VALUES(NULL, {$this->getUsuario_id()}, '{$this->getProvincia()}', '{$this->getLocalidad()}', '{$this->getDireccion()}', {$this->getCoste()}, 'confirm', CURDATE(), CURTIME());";
+		$sql = "INSERT INTO pedidos VALUES(NULL, {$this->getUsuario_id()}, '{$this->getTelefono()}', '{$this->getLocalidad()}', '{$this->getDireccion()}', {$this->getCoste()}, 'confirm', CURDATE(), CURTIME());";
 		$save = $this->db->query($sql);
 		
 		$result = false;

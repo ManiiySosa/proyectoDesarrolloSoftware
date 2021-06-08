@@ -104,6 +104,18 @@ class Usuario{
 		
 		return $result;
 	}
+
+	public function eliminar(){
+		$sql = "DELETE FROM usuarios WHERE id={$this->id}";
+		$eliminar = $this->db->query($sql);
+			
+		$result = false;
+		if($eliminar){
+			$result = true;
+		}
+		return $result;
+			
+}	
 	
 	
 	
