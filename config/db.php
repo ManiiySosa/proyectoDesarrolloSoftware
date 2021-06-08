@@ -10,7 +10,6 @@ class Database{
 			}			
 		}catch(Exception $e){
 			
-            echo "<script>alert('Error en la base de datos, intentelo de nuevo mas tarde');</script>";
 			header('Location:http://localhost/proyectoDesarrolloSoftware-master/views/error.php');
 		}
 		

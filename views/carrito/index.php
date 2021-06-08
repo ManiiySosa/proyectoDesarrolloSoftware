@@ -31,8 +31,9 @@
 		<td>
 			<?=$elemento['unidades']?>
 			<div class="updown-unidades">
-				<a href="<?=base_url?>carrito/up&index=<?=$indice?>" class="button">+</a>
-				<a href="<?=base_url?>carrito/down&index=<?=$indice?>" class="button">-</a>
+				
+				<a href="<?=base_url?>carrito/up&index=<?=$indice?>&stock=<?=$producto->stock?>&unidades=<?=$elemento['unidades']?>" class="button">+</a>	
+				<a href="<?=base_url?>carrito/down&index=<?=$indice?>&stock=<?=$producto->stock?>&unidades=<?=$elemento['unidades']?>" class="button">-</a>	
 			</div>
 		</td>
 		<td>
