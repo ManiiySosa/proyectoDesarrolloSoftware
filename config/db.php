@@ -10,10 +10,10 @@ class Database{
 			}			
 		}catch(Exception $e){
 			
-			header('Location:http://localhost/proyectoDesarrolloSoftware-master/views/error.php');
+			header('Location:http://localhost/proyectoDesarrolloSoftware/views/error.php');
 		}
 		
 		 $db->query("SET NAMES 'utf8'");
 		// $db->close();
-
+	}
 }

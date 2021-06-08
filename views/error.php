@@ -24,7 +24,7 @@
 				<!-- CONTENIDO CENTRAL -->
 				<div id="central">                    
                     <h1>Error en la base de datos, intentelo de nuevo mas tarde</h1>
-                    <a href="http://localhost/proyectoDesarrolloSoftware-master/"  class="button button-cargar">Recargar pagina</a>
+                    <a href="http://localhost/proyectoDesarrolloSoftware/"  class="button button-cargar">Recargar pagina</a>
 				</div>
 			</div>
 
