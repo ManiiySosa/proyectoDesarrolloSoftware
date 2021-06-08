@@ -43,9 +43,7 @@ class comentarioController{
 		require_once 'views/usuario/crear.php';
 	}
 	
-	public function save(){
-		//Utils::isIdentity();
-		//if(isset($_POST)){			
+	public function save(){s			
 			$comentario1=isset($_POST['comentario'])  ? $_POST['comentario'] : false;
 			$calificacion=isset($_POST['calificacion']) ? $_POST['calificacion'] : false;
 			$id_producto=isset($_POST['id'])? $_POST['id'] : false;
@@ -58,18 +56,6 @@ class comentarioController{
 				$comentarios->setId_producto($id_producto);
 				$comentarios->setnombre_usuario($nombre_usuario);
 				$save = $comentarios->save();
-
-				/*if($save){
-					$_SESSION['register'] = "complete";
-				}else{
-					$_SESSION['register'] = "failed";
-				}
-			}else{
-				$_SESSION['register'] = "failed";
-			}
-		}else{
-			$_SESSION['register'] = "failed";*/
-		//}
 		header('Location:http://localhost/proyectoDesarrolloSoftware-master/');
 	}
 	

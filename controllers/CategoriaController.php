@@ -36,47 +36,61 @@ class categoriaController{
 	}
 	
 	public function save(){
+		$categoria = new Categoria();
+		$nombre=isset($_POST['nombre'])  ? $_POST['nombre'] : false;
 		Utils::isAdmin();
-	    if(isset($_POST) && isset($_POST['nombre'])){
+	    if(isset($_POST) && isset($_POST['nombre'])){			
 			// Guardar la categoria en bd
-			$categoria = new Categoria();
-			$categoria->setNombre($_POST['nombre']);
+			if($nombre == ''){
+				$_SESSION['categoria'] = "blanco";
+			}else if($categoria->exist($nombre)){
+				$_SESSION['categoria'] = "existe";
+			}else{				
+				$categoria->setNombre($_POST['nombre']);
 
-			if(isset($_GET['id'])){
-				$id = $_GET['id'];
-				$categoria->setId($id);
+				if(isset($_GET['id'])){
+					$id = $_GET['id'];
+					$categoria->setId($id);
 
-		    	$save = $categoria->edit();
-			}else{
-				$save = $categoria->save();
+					$save = $categoria->edit();
+				}else{
+					$save = $categoria->save();
+				}
+				if($save){
+					$_SESSION['categoria'] = "complete";
+				}else{
+					$_SESSION['categoria'] = "failed";
+				}
+
+				
 			}
-			if($save){
-				$_SESSION['categoria'] = "complete";
-			}else{
-				$_SESSION['categoria'] = "failed";
-			}
+			header("Location:".base_url."categoria/index");
 
 		}else{
 			$_SESSION['categoria'] = "failed";
 		}	
-		header("Location:".base_url."categoria/index");
+
+		
+		
 	}
 
 	public function editar(){
-		Utils::isAdmin();
-		if(isset($_GET['id'])){
-			$id = $_GET['id'];
-			$edit = true;
+			Utils::isAdmin();
+			if(isset($_GET['id'])){
+				$id = $_GET['id'];
+				$edit = true;
 
-			$categoria = new Categoria();
-			$categoria->setId($id);
+				$categoria = new Categoria();
+				$categoria->setId($id);
 
-			$cat = $categoria->getOne();
-			
-			require_once 'views/categoria/crear.php';
-		}else{
-			header('Location:'.base_url.'categoria/index');
-		}
+				$cat = $categoria->getOne();
+				
+				require_once 'views/categoria/crear.php';
+			}else{
+				header('Location:'.base_url.'categoria/index');
+			}
+		
+		
 	}
 	
 }
