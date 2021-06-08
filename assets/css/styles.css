@@ -10,6 +10,7 @@ body{
     background: url(../img/bg2.jpg);
 }
 
+
 a{
     color: #01B1EA;
 }
@@ -409,6 +410,12 @@ button{
     display: block;
     float: right;
     width: 100px;
+}
+
+.button-cargar{
+    display: block;
+    float: left;
+    width: 130px;
 }
 
 .updown-unidades{
